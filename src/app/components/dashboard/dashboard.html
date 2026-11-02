@@ -1,0 +1,64 @@
+
+<app-navbar></app-navbar>
+
+
+<div class="dashboard-container">
+
+  <!-- ================= TOP STATS ================= -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <h4>Total Tasks</h4>
+      <h2>{{ totalTasks }}</h2>
+    </div>
+
+    <div class="stat-card completed">
+      <h4>Completed</h4>
+      <h2>
+       {{ getCompletedColumn() ? columnCounts[getCompletedColumn()!] : 0 }}
+      </h2>
+    </div>
+
+    <div class="stat-card progress">
+      <h4>Completion Rate</h4>
+      <h2>{{ completionRate }}%</h2>
+    </div>
+
+  </div>
+
+
+  <!-- ================= CHART + ASSIGNEE ================= -->
+  <div class="main-section">
+
+    <!-- Pie Chart -->
+    <div class="chart-card">
+      <h3>Task Distribution</h3>
+      <div class="chart-wrapper">
+        <canvas id="pieChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Assignee Progress -->
+    <div class="assignee-card">
+      <h3>Assignee Progress</h3>
+
+      <div class="assignee-item"
+           *ngFor="let user of assigneeProgressList">
+
+        <div class="assignee-header">
+          <span>{{ user.name }}</span>
+          <span>{{ user.percentage }}%</span>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill"
+               [style.width.%]="user.percentage">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

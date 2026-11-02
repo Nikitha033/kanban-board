@@ -1,0 +1,31 @@
+<div class="auth-container">
+
+  <div class="auth-card">
+
+    <h1 class="app-title">Kanban Workflow Manager</h1>
+    <p class="tagline">Organize your tasks efficiently</p>
+
+    <h2>Create Account</h2>
+
+    <input
+      type="email"
+      placeholder="Email Address"
+      [(ngModel)]="email">
+
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="password">
+
+    <button (click)="signup()">Sign Up</button>
+
+    <p class="message">{{message}}</p>
+
+    <p class="switch">
+      Already have an account?
+      <a routerLink="/login">Login</a>
+    </p>
+
+  </div>
+
+</div>

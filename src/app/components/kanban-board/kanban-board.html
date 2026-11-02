@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+
+
+<h1>INTERACTIVE KANBAN TASK AND WORKFLOW MANAGEMENT BOARD</h1>
+
+<!-- Notification -->
+
+<div *ngIf="notification"
+     [ngClass]="'notification-' + notificationPosition + ' ' + notificationType">
+  {{ notification }}
+</div>
+<!-- Add Column -->
+<div class="add-column-box">
+  <input [(ngModel)]="newColumnName" placeholder="New column name">
+  <button (click)="addColumn()">Add Column</button>
+</div>
+
+<div class="board">
+
+  <div class="column" *ngFor="let column of columns">
+
+    <!-- Column Header -->
+    <div class="column-header">
+      <h3>{{ column }}</h3>
+      <button class="delete-column-btn"
+              (click)="deleteColumn(column)">
+        ✖
+      </button>
+    </div>
+
+   <!-- Add Task Button only for To Do column -->
+<button 
+  *ngIf="column === 'To Do'"
+  class="enter-btn" 
+  (click)="toggleAddForm(column)"
+>
+  {{ showAddForm[column] ? 'Cancel' : 'Enter Task' }}
+</button>
+
+    <!-- Task Form -->
+    <div *ngIf="showAddForm[column]" class="form">
+      <input type="number" placeholder="ID" [(ngModel)]="newTask[column].id">
+      <input placeholder="Title" [(ngModel)]="newTask[column].title">
+      <input placeholder="Description" [(ngModel)]="newTask[column].description">
+      <input placeholder="Priority" [(ngModel)]="newTask[column].priority">
+      <input placeholder="Assignee" [(ngModel)]="newTask[column].assignee">
+      <input type="date" [(ngModel)]="newTask[column].dueDate">
+      <button (click)="addTask(column)">
+        {{ editTaskId ? 'Update' : 'Add' }}
+      </button>
+    </div>
+
+    <!-- Drag & Drop List -->
+    <div cdkDropList
+         [id]="column"
+         [cdkDropListData]="getTasksForColumn(column)"
+         (cdkDropListDropped)="drop($event, column)"
+         class="list">
+         
+
+      <div class="card"
+           *ngFor="let task of getTasksForColumn(column)"
+           cdkDrag>
+
+        <b>{{ task.title }}</b>
+        <p>{{ task.description }}</p>
+        <small>
+          {{ task.priority }} |
+          {{ task.assignee }} |
+          {{ task.dueDate }}
+        </small>
+
+        <div class="actions">
+          <button (click)="editTask(task, column)">Edit</button>
+          <button (click)="deleteTask(task.id)">Delete</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

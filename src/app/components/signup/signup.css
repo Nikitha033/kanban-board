@@ -1,0 +1,84 @@
+.auth-container{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#1565c0,#42a5f5);
+font-family:Arial, Helvetica, sans-serif;
+}
+
+.auth-card{
+background:white;
+padding:40px;
+width:360px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+/* Application Title */
+
+.app-title{
+font-size:22px;
+color:#1565c0;
+margin-bottom:5px;
+}
+
+.tagline{
+font-size:13px;
+color:#666;
+margin-bottom:20px;
+}
+
+/* Form title */
+
+.auth-card h2{
+margin-bottom:20px;
+}
+
+/* Inputs */
+
+.auth-card input{
+width:100%;
+padding:10px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:5px;
+font-size:14px;
+}
+
+/* Button */
+
+.auth-card button{
+width:100%;
+padding:10px;
+background:#1565c0;
+color:white;
+border:none;
+border-radius:5px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.auth-card button:hover{
+background:#0d47a1;
+}
+
+/* Links */
+
+.switch{
+margin-top:15px;
+font-size:14px;
+}
+
+.switch a{
+color:#1565c0;
+font-weight:bold;
+text-decoration:none;
+}
+
+.message{
+color:red;
+margin-top:10px;
+}
